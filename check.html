@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>Check</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>     <!-- Api for Google Charts -->
+    <script>
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['bar']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart(){
+      var data = new google.visualization.DataTable();
+      data.addColumn('string','Name');
+      data.addColumn('number','Age');
+      var age = [20,22,22];
+      var name = ["Harsh","Yash","Helal"];
+      for(i = 0;i < age.length;i ++)
+      {
+          data.addRow([name[i],age[i]]);
+      }
+    //   data.addRow(["Harsh",20]);
+    //   data.addRow(["Yash",22]);
+    //   data.addRow(["Helal",22]);
+      var option = {
+      	title : 'Ages',
+        width : 500,
+        height : 600
+      };
+      var chart = new google.charts.Bar(document.getElementById('chart_div'));
+      chart.draw(data,option)
+      }
+    </script>
+  </head>
+  <body>
+      <div id="chart_div">
+          
+      </div>
+  </body>
+</html>

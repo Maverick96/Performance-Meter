@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <title>Marks</title>
+    <link rel="stylesheet" type="text/css" href="home.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">     <!--Bootstrap api -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> <!-- Api for JQuery -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>     <!-- Api for Google Charts -->
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Arvo:bi&text=Performance%20Meter">   <!--Google Fonts api -->
+    <script type = "text/javascript" src = "./check.js"></script>       <!--which does the api call for google charts -->
+    <script type = "text/javascript" src = "./verify.js"></script>      <!--To check the validity of USN -->
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+        <div class = "container-fluid">
+			<nav class="navbar navbar-inverse navbar-left" role="navigation" id="navBar">
+  			  <div class="container-fluid" >
+    			<div class="navbar-header">
+    			  	<a class="navbar-brand font-effect-3d-float" href="home.html" id="navBarHeader">Performance Meter</a>
+    			</div>
+    			<ul class="nav navbar-nav" id="navEle">
+                <li ><a href="home.html"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                <li class="active" id="marks"> <a href ="chart.html"><span class="glyphicon glyphicon-education"></span> Marks</a></li>
+    			</ul>
+ 			 </div>
+			</nav>
+      <br><br><br><br><br><br><br><br>
+
+  <div class="container">
+    <form role = "form">
+      <div class="form-group" id="form_usn">
+          <label for="usn">USN:</label>
+              <input type="text" class="form-control" id="USN" placeholder="Enter Your USN">
+                  <span class="glyphicon glyphicon-remove form-control-feedback"></span>  <!--When enterted usn is wrong,add error glyphicon -->
+      </div>
+    </form>
+    <button type="button" class="btn btn-primary" onclick="drawTheChart()">Submit</button>
+  </div>
+
+    <br><br><br><br><br><br><br><br>
+      <div id="chart_div">      <!-- Position where the chart will be attached -->
+    </div><br><br><br><br>
+
+    <script type = "text/javascript">
+        function drawTheChart()
+        {
+          var usn1 = document.getElementById('USN').value;    //To get the value stored in #USN
+          var res = verify(usn1);    //Verify Usn entered
+          if(res)   //if usn is correct
+           Chart(usn1); //To draw the Chart call the JS function
+          else
+          {
+            $('#form_usn').toggleClass("has-error");
+            $('#form_usn').addClass("has-feedback");
+          }
+        }
+      
+    </script>
+    
+  </body>
+</html>
